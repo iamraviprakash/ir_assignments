@@ -47,16 +47,16 @@ def preprocess(f):
 #traverse through files
 
 def create_index_table(filepath):
-	
+
 	start=time.time()
 	index_table=[]
-	
+
 	for folder,subfolders,files in os.walk(filepath):
-	
+
 		for filename in files:
-			
+
 			processed=preprocess(open(os.path.join(os.path.abspath(folder),filename)))
-			
+
 			for word in processed:
 
 				term=word
@@ -64,7 +64,7 @@ def create_index_table(filepath):
 				index_table.append((term,document))
 
 	index_table=sorted(index_table)
-				
+
 	index_table_final= collections.defaultdict()
 	prev_word=''
 
@@ -81,16 +81,16 @@ def create_index_table(filepath):
 			index_table_final[term][0]=[document]
 
 		prev_word=term
-	
+
 	for term in index_table_final:
 			index_table_final[term][1] = len(index_table_final[term][0])
-	
+
 
 	end=time.time()
 	print end-start
 	return index_table_final
 
 if __name__=="__main__":
-	ind_table=create_index_table("data/text_data")	
+	ind_table=create_index_table("data/text_data")
 	f=open("data/index_table.json",'w')
 	json.dump(ind_table,f)
