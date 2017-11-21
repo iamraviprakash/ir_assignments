@@ -5,22 +5,9 @@ from nltk.corpus import stopwords
 spam=[]
 ham=[]
 
-for folder,subfolders,files in os.walk('data/sample/spam'):
+for folder,subfolders,files in os.walk('data/sample/train/spam'):
 
     for filename in files:
-
-        ip=open((os.path.join(os.path.abspath(folder),filename)),'r')
-        final_text=''
-        for line in ip:
-            line=line.strip().decode("ascii","ignore").encode("ascii")
-            if line=="":
-                continue
-            final_text+=line+'\n'
-        ip.close()
-
-        op=open((os.path.join(os.path.abspath(folder),filename)),'w')
-        op.write(final_text)
-        op.close()
 
         f=open((os.path.join(os.path.abspath(folder),filename)))
         for word in word_tokenize(f.read().lower()):
@@ -29,22 +16,9 @@ for folder,subfolders,files in os.walk('data/sample/spam'):
 
         f.close()
 
-for folder,subfolders,files in os.walk('data/sample/ham'):
+for folder,subfolders,files in os.walk('data/sample/train/ham'):
 
     for filename in files:
-
-        ip=open((os.path.join(os.path.abspath(folder),filename)),'r')
-        final_text=''
-        for line in ip:
-            line=line.strip().decode("ascii","ignore").encode("ascii")
-            if line=="":
-                continue
-            final_text+=line+'\n'
-        ip.close()
-
-        op=open((os.path.join(os.path.abspath(folder),filename)),'w')
-        op.write(final_text)
-        op.close()
 
         for filename in files:
             f=open((os.path.join(os.path.abspath(folder),filename)))
