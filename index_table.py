@@ -2,8 +2,7 @@ from nltk import word_tokenize
 from nltk import PorterStemmer
 from nltk.corpus import stopwords
 import nltk
-
-from collections import OrderedDict
+import collections
 
 import os
 import json
@@ -66,7 +65,7 @@ def create_index_table(filepath):
 
 	index_table=sorted(index_table)
 				
-	index_table_final=OrderedDict()
+	index_table_final= collections.defaultdict()
 	prev_word=''
 
 	for i in range(len(index_table)):
@@ -75,13 +74,16 @@ def create_index_table(filepath):
 		document=index_table[i][1]
 
 		if prev_word==term:
-			index_table_final[term].append(document)
+			index_table_final[term][0].append(document)
+
 		else:
-			index_table_final[term]=[document]
+			index_table_final[term] = {}
+			index_table_final[term][0]=[document]
 
 		prev_word=term
-
-
+	
+	for term in index_table_final:
+			index_table_final[term][1] = len(index_table_final[term][0])
 	
 
 	end=time.time()
@@ -89,6 +91,6 @@ def create_index_table(filepath):
 	return index_table_final
 
 if __name__=="__main__":
-	ind_table=create_index_table("data/text_data")	
+	ind_table=create_index_table("/Users/yashsrivastava/Desktop/raw")	
 	f=open("data/index_table.json",'w')
 	json.dump(ind_table,f)
