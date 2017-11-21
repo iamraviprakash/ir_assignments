@@ -13,11 +13,11 @@ search_words=search_term.split()
 stemmer=PorterStemmer()
 
 first_word=stemmer.stem(search_words[0])
-doc_list=index_table[first_word]
+doc_list=index_table[first_word]["0"]
 
 for word in search_words:
 	word=stemmer.stem(word)
-	doc_list2=index_table[word]
+	doc_list2=index_table[word]["0"]
 	doc_list=list(set(doc_list) & set(doc_list2))
 
 print doc_list
