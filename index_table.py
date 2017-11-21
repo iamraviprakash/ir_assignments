@@ -91,6 +91,6 @@ def create_index_table(filepath):
 	return index_table_final
 
 if __name__=="__main__":
-	ind_table=create_index_table("/Users/yashsrivastava/Desktop/raw")	
+	ind_table=create_index_table("data/text_data")	
 	f=open("data/index_table.json",'w')
 	json.dump(ind_table,f)
