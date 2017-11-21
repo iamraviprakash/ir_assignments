@@ -20,11 +20,10 @@ for folder,subfolders,files in os.walk('data/sample/train/ham'):
 
     for filename in files:
 
-        for filename in files:
-            f=open((os.path.join(os.path.abspath(folder),filename)))
-            for word in word_tokenize(f.read().lower()):
-                if word.isalnum() and word not in stopwords.words('english') and word!='subject':
-                    ham.append(word)
+        f=open((os.path.join(os.path.abspath(folder),filename)))
+        for word in word_tokenize(f.read().lower()):
+            if word.isalnum() and word not in stopwords.words('english') and word!='subject':
+                ham.append(word)
 
         f.close()
 
