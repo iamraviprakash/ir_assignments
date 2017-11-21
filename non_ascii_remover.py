@@ -10,7 +10,7 @@ for folder,subfolders,files in os.walk('data/sample'):
             line=line.strip().decode("ascii","ignore").encode("ascii")
             if line=="":
                 continue
-            final_text+=line
+            final_text+=line+' '
         ip.close()
 
         op=open((os.path.join(os.path.abspath(folder),filename)),'w')
