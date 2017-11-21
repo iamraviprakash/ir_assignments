@@ -4,7 +4,7 @@ import time
 
 from nltk import PorterStemmer
 
-f=open('index_table.json','r')
+f=open('data/index_table.json','r')
 #start=time.time()
 ind_table=json.load(f)
 for word in ind_table.keys():

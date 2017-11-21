@@ -1,12 +1,15 @@
 from nltk import word_tokenize
 from nltk import PorterStemmer
 from nltk.corpus import stopwords
+import nltk
 
 from collections import OrderedDict
 
 import os
 import json
 import time
+
+nltk.data.path.append("/Users/yashsrivastava/Documents/Files/IR/nltk_data")
 
 #tokenise,remove punctuation and convert to lowercase
 
