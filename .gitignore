@@ -1,3 +1,5 @@
 enron_dataset/
 data/text_data/
-enron1/
+data/enron1/
+data/sample/
+data/nbdata.json
