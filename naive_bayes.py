@@ -2,6 +2,8 @@ import os,json
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
 from non_ascii_remover import remove_non_ascii
+import nltk
+nltk.data.path.append("/Users/yashsrivastava/Documents/Files/IR/nltk_data")
 
 spam=[]
 ham=[]

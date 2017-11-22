@@ -1,6 +1,8 @@
 import os,json
 from nltk.tokenize import word_tokenize
 from nltk import bigrams,trigrams
+import nltk
+nltk.data.path.append("/Users/yashsrivastava/Documents/Files/IR/nltk_data")
 
 english=dict()
 french=dict()

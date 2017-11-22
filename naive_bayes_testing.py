@@ -1,6 +1,8 @@
 import os,json
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+import nltk
+nltk.data.path.append("/Users/yashsrivastava/Documents/Files/IR/nltk_data")
 
 f=open('data/nbdata.json','r')
 P=json.load(f)

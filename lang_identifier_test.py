@@ -1,6 +1,8 @@
 import os,json,sys
 from nltk.tokenize import word_tokenize
 from nltk import bigrams,trigrams
+import nltk
+nltk.data.path.append("/Users/yashsrivastava/Documents/Files/IR/nltk_data")
 
 
 def list_grams(language,text):
