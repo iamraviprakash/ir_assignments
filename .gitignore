@@ -2,3 +2,4 @@ enron_dataset/
 data/text_data/
 data/enron1/
 data/sample/
+non_ascii_remover.pyc

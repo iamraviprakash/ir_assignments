@@ -1,9 +1,12 @@
 import os,json
 from nltk.tokenize import word_tokenize
 from nltk.corpus import stopwords
+from non_ascii_remover import remove_non_ascii
 
 spam=[]
 ham=[]
+
+remove_non_ascii('data/sample')
 
 for folder,subfolders,files in os.walk('data/sample/train/spam'):
 
