@@ -38,9 +38,9 @@ for folder,subfolders,files in os.walk('data/sample/test/spam'):
 
         if P_spam>=P_ham:
             correct_count+=1
-            print "Spam!"
+            print filename,":Spam!"
         else:
-            print "Ham!"
+            print filename,":Ham!"
 
 print "Ham documents:"
 
@@ -58,9 +58,9 @@ for folder,subfolders,files in os.walk('data/sample/test/ham'):
                 P_ham*=P[word][1]
 
         if P_spam>=P_ham:
-            print "Spam!"
+            print filename,":Spam!"
         else:
             correct_count+=1
-            print "Ham!"
+            print filename,":Ham!"
 
 print "Accuracy:",float(correct_count)/total_count
