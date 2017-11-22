@@ -11,23 +11,28 @@ spanish=dict()
 
 def list_grams(language,text):
 
-    for bigram in bigrams(text):
+    words=word_tokenize(text)
 
-        bigram=(''.join(bigram)).decode('latin-1')
+    for text in words:
+        if text.isalnum():
 
-        if bigram in language:
-            language[bigram]+=1
-        elif bigram not in language:
-            language[bigram]=1
+            for bigram in bigrams(text):
 
-    for trigram in trigrams(text):
+                bigram=(''.join(bigram))
 
-        trigram=(''.join(trigram)).decode('latin-1')
+                if bigram in language:
+                    language[bigram]+=1
+                elif bigram not in language:
+                    language[bigram]=1
 
-        if trigram in language:
-            language[trigram]+=1
-        elif trigram not in language:
-            language[trigram]=1
+            for trigram in trigrams(text):
+
+                trigram=(''.join(trigram))
+
+                if trigram in language:
+                    language[trigram]+=1
+                elif trigram not in language:
+                    language[trigram]=1
 
 
 def create_language_profile(language):
@@ -44,6 +49,8 @@ def create_language_profile(language):
             global german
             global italian
             global spanish
+
+            text=text.decode('latin-1')
 
             if language=='english':
                 list_grams(english,text)
