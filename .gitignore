@@ -2,3 +2,5 @@ enron_dataset/
 data/text_data/
 data/enron1/
 non_ascii_remover.pyc
+DLI32-2/
+conversations.out
