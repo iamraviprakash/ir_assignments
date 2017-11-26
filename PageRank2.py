@@ -86,10 +86,12 @@ print("pagerank\n\n")
 
 f=open(outputfile, 'w')
 
-
-#for i in pagerank:        #for less input.txt
+#for input.txt as input
+#for i in pagerank:      
 #	pagerank[i]=calculatePageRank(i)
 #	f.write('node: %s ; pagerank: %s\n' % (i, pagerank[i]))
+
+#for pagerank.txt as input
 
 print("Mr. Bachchan")
 pagerank[145125358] = calculatePageRank(145125358)
