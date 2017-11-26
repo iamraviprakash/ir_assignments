@@ -1,11 +1,10 @@
-from operator import itemgetter
-
 # Declarations
 
 edges=[]   #list of edges
 df=0.85 #damping factor
 
 # Functions
+
 
 def addEdge(edge):
 	global edges
@@ -56,7 +55,7 @@ def calculatePageRank(node):
 					n=outgoingEdges(j)
 					ratioSum=ratioSum+1/n
 			flag=1
-			pr=pr+df*ratioSum
+			pr=pr+df*(ratioSum/listNodes())     #initial pagerank=1/total_no_of_ nodes for all nodes
 
 		if flag==1:
 			break
@@ -69,7 +68,6 @@ def calculatePageRank(node):
 ## File read
 #print('extractEdges\n')
 extractEdges('pagerank.txt')
-
 
 #Computing page rank for each node
 print("pagerank\n\n")
