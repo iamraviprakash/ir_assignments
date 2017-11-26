@@ -2,14 +2,20 @@
 
 edges=[]   #list of edges
 df=0.85 #damping factor
-
+pagerank={}
 # Functions
 
+def initialize():
+	global pagerank
+	pagerank=dict.fromkeys(listNodes(),1/totalNodes())
 
 def addEdge(edge):
 	global edges
 	edges+=[edge]
 
+def pageRankOf(node):
+	global pagerank
+	return pagerank[node]
 
 def extractEdges(inputfile):
 
@@ -23,12 +29,15 @@ def extractEdges(inputfile):
 		#print(edge)
 
 def listNodes():
-	global edges, nodes
+	global edges
 	f = open('pagerank.txt', 'r')
 	test=f.read().split()
+	test=list(map(int,test))
 	test_set=set(test)
-	return len(test_set)
+	return test_set
 			
+def totalNodes():
+	return len(listNodes())
 
 def outgoingEdges(node):
 	count=0
@@ -46,16 +55,16 @@ def calculatePageRank(node):
 
 	ratioSum=0
 	pr=1-df
-	pr=pr/listNodes()
+	pr=pr/totalNodes()
 	flag=0
 	for i in edges:
 		if i[0]==node:
 			for j in i:
 				if j!=node:
 					n=outgoingEdges(j)
-					ratioSum=ratioSum+1/n
+					ratioSum=ratioSum+pageRankOf(j)/n
 			flag=1
-			pr=pr+df*(ratioSum/listNodes())     #initial pagerank=1/total_no_of_ nodes for all nodes
+			pr=pr+df*ratioSum
 
 		if flag==1:
 			break
@@ -69,15 +78,17 @@ def calculatePageRank(node):
 #print('extractEdges\n')
 extractEdges('pagerank.txt')
 
+initialize()
+
 #Computing page rank for each node
 print("pagerank\n\n")
 
 
 print("Mr. Bachchan")
-pr = calculatePageRank(145125358)
-print("pagerank: %s\n" % pr)
+pagerank[145125358] = calculatePageRank(145125358)
+print("pagerank: %s\n" % pagerank[145125358])
 
 
 print("Mr. Modi")
-pr = calculatePageRank(18839785)
-print("pagerank: %s\n" % pr)
+pagerank[18839785] = calculatePageRank(18839785)
+print("pagerank: %s\n" % pagerank[18839785])
