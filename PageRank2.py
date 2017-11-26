@@ -1,5 +1,6 @@
 # Declarations
-
+inputfile='pagerank.txt'
+outputfile='result3.txt'
 edges=[]   #list of edges
 df=0.85 #damping factor
 pagerank={}
@@ -17,8 +18,8 @@ def pageRankOf(node):
 	global pagerank
 	return pagerank[node]
 
-def extractEdges(inputfile):
-
+def extractEdges():
+	global inputfile
 	filePointer = open(inputfile, 'r')
 	for line in filePointer:
 		edge=[]
@@ -29,8 +30,8 @@ def extractEdges(inputfile):
 		#print(edge)
 
 def listNodes():
-	global edges
-	f = open('pagerank.txt', 'r')
+	global edges, inputfile
+	f = open(inputfile, 'r')
 	test=f.read().split()
 	test=list(map(int,test))
 	test_set=set(test)
@@ -76,13 +77,19 @@ def calculatePageRank(node):
 
 ## File read
 #print('extractEdges\n')
-extractEdges('pagerank.txt')
+extractEdges()
 
 initialize()
 
 #Computing page rank for each node
 print("pagerank\n\n")
 
+f=open(outputfile, 'w')
+
+
+#for i in pagerank:        #for less input.txt
+#	pagerank[i]=calculatePageRank(i)
+#	f.write('node: %s ; pagerank: %s\n' % (i, pagerank[i]))
 
 print("Mr. Bachchan")
 pagerank[145125358] = calculatePageRank(145125358)
@@ -92,3 +99,4 @@ print("pagerank: %s\n" % pagerank[145125358])
 print("Mr. Modi")
 pagerank[18839785] = calculatePageRank(18839785)
 print("pagerank: %s\n" % pagerank[18839785])
+
